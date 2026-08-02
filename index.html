@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Captain Joe's Vegas Weekend</title>
+<meta name="description" content="Two nights. Five guys. One groom. Live itinerary.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#120A16">
+<meta property="og:title" content="Captain Joe's Vegas Weekend">
+<meta property="og:description" content="September 18–20, 2026. The plizan, revealed.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎰</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Monoton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────
+   CAPTAIN JOE — tokens
+   ink    velvet plum-black, the room the sign hangs in
+   felt   card-table green
+   neon   marquee pink
+   bulb   marquee bulb gold
+   cream  aged paper
+   ox     oxblood banding
+   ───────────────────────────────────────────── */
+:root{
+  --ink:#120A16;
+  --ink-2:#1B0F20;
+  --panel:#1E1224;
+  --felt:#12402F;
+  --neon:#FF3D7F;
+  --bulb:#FFD166;
+  --cream:#F4E9D8;
+  --ox:#5A1024;
+  --dim:rgba(244,233,216,.55);
+  --hair:rgba(255,209,102,.22);
+  --rad:14px;
+  --pad:clamp(16px,4.5vw,28px);
+  --display:"Monoton",system-ui,sans-serif;
+  --head:"Anton","Arial Narrow",Impact,sans-serif;
+  --body:"Space Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --script:"Great Vibes","Snell Roundhand",cursive;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--cream);font-family:var(--body);
+  line-height:1.5;overflow-x:hidden;
+  background-image:
+    radial-gradient(120% 70% at 50% -10%, rgba(255,61,127,.16), transparent 60%),
+    radial-gradient(90% 50% at 50% 105%, rgba(18,64,47,.5), transparent 65%);
+  background-attachment:fixed;
+}
+::selection{background:var(--neon);color:#fff}
+a{color:var(--bulb);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--neon);outline-offset:3px;border-radius:6px}
+.wrap{max-width:760px;margin:0 auto;padding:0 var(--pad)}
+.eyebrow{font-family:var(--head);letter-spacing:.22em;text-transform:uppercase;
+  font-size:.68rem;color:var(--bulb);opacity:.8}
+.script{font-family:var(--script);font-size:1.5em;line-height:1;color:var(--neon)}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ── curtain ───────────────────────────────── */
+#curtain{position:fixed;inset:0;z-index:99;background:#08050B;display:grid;
+  place-items:center;text-align:center;padding:24px;transition:opacity .7s ease}
+#curtain.out{opacity:0;pointer-events:none}
+#curtain .dark-sign{font-family:var(--display);font-size:clamp(2.1rem,10vw,4rem);
+  color:#2B2130;line-height:1.15;letter-spacing:.02em}
+#lightBtn{margin-top:34px;background:none;border:1px solid rgba(255,209,102,.35);
+  color:var(--bulb);font-family:var(--head);letter-spacing:.2em;text-transform:uppercase;
+  font-size:.85rem;padding:15px 26px;border-radius:100px;cursor:pointer;
+  animation:breathe 2.4s ease-in-out infinite}
+#lightBtn:hover{background:rgba(255,209,102,.09)}
+@keyframes breathe{50%{box-shadow:0 0 30px rgba(255,209,102,.28)}}
+#curtain small{display:block;margin-top:18px;color:#4A3C52;font-size:.72rem;letter-spacing:.1em}
+
+/* ── the marquee (signature element) ───────── */
+.marquee{position:relative;margin:22px 0 8px;padding:clamp(26px,7vw,42px) clamp(16px,5vw,34px);
+  border-radius:6px;background:
+    linear-gradient(180deg,rgba(90,16,36,.5),rgba(18,10,22,.85));
+  border:1px solid rgba(255,209,102,.3);
+  box-shadow:0 24px 70px -30px #000, inset 0 0 60px rgba(90,16,36,.5)}
+.bulbs{position:absolute;pointer-events:none}
+.bulbs.t,.bulbs.b{left:8px;right:8px;height:8px}
+.bulbs.t{top:-4px}.bulbs.b{bottom:-4px}
+.bulbs.l,.bulbs.r{top:8px;bottom:8px;width:8px}
+.bulbs.l{left:-4px}.bulbs.r{right:-4px}
+.bulbs i{position:absolute;inset:0;display:block;
+  background-image:radial-gradient(circle at center,var(--bulb) 0 2px,transparent 2.6px);
+  background-size:16px 16px;background-position:0 center;opacity:.28}
+.bulbs.l i,.bulbs.r i{background-size:16px 16px;background-position:center 0}
+.bulbs i.odd{background-position:8px center}
+.bulbs.l i.odd,.bulbs.r i.odd{background-position:center 8px}
+.lit .bulbs i{animation:chase 1.1s steps(1,end) infinite;filter:drop-shadow(0 0 4px rgba(255,209,102,.9))}
+.lit .bulbs i.odd{animation-delay:.55s}
+@keyframes chase{0%,49%{opacity:1}50%,100%{opacity:.2}}
+
+.sign-top{text-align:center;font-family:var(--head);letter-spacing:.3em;
+  text-transform:uppercase;font-size:.7rem;color:var(--bulb);opacity:.85}
+.neon{display:block;text-align:center;font-family:var(--display);
+  font-size:clamp(2.3rem,11.5vw,4.6rem);line-height:1.05;margin:14px 0 6px;
+  color:#fff;cursor:pointer;user-select:none;background:none;border:0;width:100%;padding:0}
+.lit .neon{
+  color:#FFF0F6;
+  text-shadow:0 0 6px #fff,0 0 16px var(--neon),0 0 34px var(--neon),
+    0 0 64px rgba(255,61,127,.75),0 2px 0 rgba(0,0,0,.4);
+  animation:flicker 7s linear infinite}
+@keyframes flicker{0%,96%,100%{opacity:1}96.5%{opacity:.4}97%{opacity:1}97.6%{opacity:.55}98.2%{opacity:1}}
+.sign-sub{text-align:center;font-family:var(--head);letter-spacing:.18em;
+  text-transform:uppercase;font-size:clamp(.72rem,2.8vw,.9rem);color:var(--cream);opacity:.75}
+
+/* changeable-letter row */
+.letterboard{margin-top:22px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  padding:14px 10px;text-align:center;background:repeating-linear-gradient(180deg,
+    rgba(0,0,0,.35) 0 22px, rgba(255,255,255,.02) 22px 23px)}
+.lb-label{font-family:var(--head);letter-spacing:.24em;font-size:.62rem;color:var(--neon);
+  text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:7px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--neon);
+  box-shadow:0 0 10px var(--neon);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25;transform:scale(.75)}}
+.lb-line{font-family:var(--head);text-transform:uppercase;letter-spacing:.05em;
+  font-size:clamp(1.15rem,5.4vw,1.75rem);margin-top:7px;line-height:1.15}
+.lb-meta{font-size:.8rem;color:var(--dim);margin-top:5px}
+
+/* countdown */
+.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:20px}
+.cell{background:rgba(0,0,0,.42);border:1px solid var(--hair);border-radius:9px;padding:9px 2px 7px;text-align:center}
+.cell b{display:block;font-family:var(--head);font-size:clamp(1.5rem,7.5vw,2.3rem);
+  line-height:1;color:var(--bulb);font-variant-numeric:tabular-nums}
+.cell span{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.vegastime{text-align:center;margin-top:12px;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim)}
+
+/* ── sticky day rail ───────────────────────── */
+.rail{position:sticky;top:0;z-index:20;background:rgba(18,10,22,.93);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--hair);margin-top:26px}
+.rail-in{display:flex;gap:6px;overflow-x:auto;padding:10px var(--pad);scrollbar-width:none;
+  max-width:760px;margin:0 auto}
+.rail-in::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;background:transparent;border:1px solid var(--hair);color:var(--cream);
+  font-family:var(--head);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;
+  padding:8px 14px;border-radius:100px;cursor:pointer;text-decoration:none}
+.chip[aria-current="true"]{background:var(--neon);border-color:var(--neon);color:#fff}
+
+/* ── sections ──────────────────────────────── */
+section{padding:38px 0 6px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.sec-head h2{font-family:var(--head);text-transform:uppercase;letter-spacing:.06em;
+  font-size:clamp(1.5rem,6.5vw,2.1rem);margin:0}
+.sec-note{color:var(--dim);font-size:.86rem;margin:0 0 20px}
+
+/* ── timeline ──────────────────────────────── */
+.day{margin-bottom:30px}
+.day-title{font-family:var(--head);text-transform:uppercase;letter-spacing:.18em;
+  font-size:.85rem;color:var(--bulb);padding-bottom:8px;border-bottom:1px solid var(--hair);
+  display:flex;justify-content:space-between;align-items:baseline;cursor:default}
+.day-title em{font-style:normal;color:var(--dim);font-family:var(--body);letter-spacing:0;font-size:.75rem}
+.items{list-style:none;margin:0;padding:0 0 0 20px;position:relative}
+.items:before{content:"";position:absolute;left:4px;top:12px;bottom:12px;width:1px;
+  background:linear-gradient(180deg,transparent,var(--hair) 12%,var(--hair) 88%,transparent)}
+.item{position:relative;padding:15px 0;border-bottom:1px solid rgba(255,209,102,.08)}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-20px;top:22px;width:9px;height:9px;
+  border-radius:50%;background:var(--ink);border:1px solid var(--bulb);opacity:.55}
+.item .t{font-family:var(--head);letter-spacing:.08em;font-size:.8rem;color:var(--bulb);
+  font-variant-numeric:tabular-nums}
+.item h3{margin:3px 0 2px;font-size:1.06rem;font-weight:700;letter-spacing:-.01em}
+.item p{margin:2px 0 0;font-size:.87rem;color:var(--dim)}
+.item .where{font-size:.82rem;color:rgba(244,233,216,.72)}
+.item.past{opacity:.32}
+.item.past .t{text-decoration:line-through}
+.item.live{background:linear-gradient(90deg,rgba(255,61,127,.15),transparent 70%);
+  border-radius:10px;padding-left:12px;margin-left:-12px;border-bottom-color:transparent}
+.item.live:before{left:-8px;background:var(--neon);border-color:var(--neon);opacity:1;
+  box-shadow:0 0 14px var(--neon)}
+.item.live h3{color:#fff}
+.item.next:before{opacity:1;background:var(--bulb)}
+.tag{display:inline-block;font-family:var(--head);font-size:.58rem;letter-spacing:.2em;
+  text-transform:uppercase;padding:3px 8px;border-radius:100px;margin-left:8px;vertical-align:2px}
+.tag.live{background:var(--neon);color:#fff}
+.tag.next{background:var(--bulb);color:#2A1206}
+.tag.tbd{border:1px solid var(--hair);color:var(--bulb)}
+.tag.star{background:var(--felt);color:var(--bulb);border:1px solid var(--hair)}
+.bar{height:3px;background:rgba(255,255,255,.12);border-radius:3px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+
+/* ── cards ─────────────────────────────────── */
+.grid{display:grid;gap:12px}
+@media(min-width:620px){.grid.two{grid-template-columns:1fr 1fr}}
+.card{background:var(--panel);border:1px solid var(--hair);border-radius:var(--rad);padding:16px}
+.card h3{margin:0 0 6px;font-family:var(--head);text-transform:uppercase;letter-spacing:.1em;
+  font-size:.86rem;color:var(--bulb)}
+.card p{margin:0;font-size:.9rem;color:rgba(244,233,216,.82)}
+.card .small{font-size:.8rem;color:var(--dim);margin-top:6px}
+.person{display:flex;justify-content:space-between;gap:12px;padding:11px 0;
+  border-bottom:1px solid rgba(255,209,102,.1)}
+.person:last-child{border-bottom:0}
+.person b{font-size:.98rem;font-weight:700}
+.person .role{display:block;font-size:.76rem;color:var(--dim)}
+.person .fl{text-align:right;font-size:.76rem;color:var(--dim);white-space:nowrap;
+  font-variant-numeric:tabular-nums}
+.btn{display:inline-block;background:var(--neon);color:#fff;text-decoration:none;border:0;
+  font-family:var(--head);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;
+  padding:11px 16px;border-radius:100px;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid var(--hair);color:var(--bulb)}
+.suit{color:var(--neon);cursor:pointer;padding:0 1px;transition:transform .2s}
+.suit:hover{transform:scale(1.4);display:inline-block}
+.suit.found{color:var(--bulb);text-shadow:0 0 12px var(--bulb)}
+.rules li{margin-bottom:9px;font-size:.9rem;color:rgba(244,233,216,.82)}
+.oracle{min-height:3.2em;display:grid;place-items:center;text-align:center;font-size:1rem;
+  padding:14px;border:1px dashed var(--hair);border-radius:10px;margin-bottom:12px}
+.score{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0}
+.score .n{font-family:var(--head);font-size:1.6rem;color:var(--bulb);min-width:1.4em;text-align:center}
+.pill{background:rgba(0,0,0,.35);border:1px solid var(--hair);color:var(--bulb);width:34px;height:34px;
+  border-radius:50%;font-size:1.1rem;cursor:pointer;line-height:1}
+
+/* aim window */
+.aim{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);z-index:80;
+  width:min(340px,92vw);background:#D6D3CE;color:#000;border:2px outset #fff;
+  border-radius:3px;font-family:"Segoe UI",Tahoma,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.7);
+  opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+.aim.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.aim .bar2{background:linear-gradient(180deg,#2A5BC4,#12357F);color:#fff;font-size:.76rem;
+  padding:4px 7px;display:flex;justify-content:space-between;font-weight:700}
+.aim .bar2 button{background:#C9C6C1;border:1px outset #fff;width:17px;height:15px;
+  font-size:.6rem;line-height:1;cursor:pointer}
+.aim .msgs{padding:9px;font-size:.82rem;background:#fff;min-height:130px}
+.aim .msgs p{margin:0 0 7px}
+.aim .u1{color:#B8151B;font-weight:700}
+.aim .u2{color:#1414B8;font-weight:700}
+.aim .away{background:#FFF9D6;border-top:1px solid #B9B6B1;padding:6px 9px;font-size:.72rem;font-style:italic}
+
+/* toast */
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+  background:var(--felt);border:1px solid var(--bulb);color:var(--cream);padding:12px 18px;
+  border-radius:100px;font-size:.86rem;z-index:90;opacity:0;transition:.3s;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* confetti */
+.conf{position:fixed;top:-40px;font-size:20px;z-index:85;pointer-events:none;
+  animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.1}}
+
+footer{margin-top:40px;padding:30px 0 60px;border-top:1px solid var(--hair);text-align:center}
+footer p{font-size:.8rem;color:var(--dim);margin:6px 0}
+.hidden-note{opacity:0;transition:opacity .5s}
+.hidden-note.on{opacity:1}
+
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ CURTAIN ══ -->
+<div id="curtain">
+  <div>
+    <div class="dark-sign">CAPTAIN JOE'S<br>VEGAS WEEKEND</div>
+    <button id="lightBtn">Light it up</button>
+    <small>SEPTEMBER 18–20 · 2026 · LAS VEGAS NV</small>
+  </div>
+</div>
+
+<main id="app">
+<div class="wrap">
+
+  <!-- ══ MARQUEE ══ -->
+  <div class="marquee" id="sign">
+    <div class="bulbs t"><i></i><i class="odd"></i></div>
+    <div class="bulbs b"><i></i><i class="odd"></i></div>
+    <div class="bulbs l"><i></i><i class="odd"></i></div>
+    <div class="bulbs r"><i></i><i class="odd"></i></div>
+
+    <div class="sign-top">Now appearing · 2 nights only</div>
+    <button class="neon" id="neonTitle" title="Go on, tap it">CAPTAIN JOE</button>
+    <div class="sign-sub" id="signSub">The Chakko Kid · Final Weekend Before The Final&nbsp;2</div>
+
+    <div class="letterboard">
+      <div class="lb-label"><span class="dot"></span><span id="lbLabel">Doors open in</span></div>
+      <div class="lb-line" id="lbLine">The plizan is loading…</div>
+      <div class="lb-meta" id="lbMeta"></div>
+    </div>
+
+    <div class="clock" id="clock">
+      <div class="cell"><b id="cD">--</b><span>Days</span></div>
+      <div class="cell"><b id="cH">--</b><span>Hrs</span></div>
+      <div class="cell"><b id="cM">--</b><span>Min</span></div>
+      <div class="cell"><b id="cS">--</b><span>Sec</span></div>
+    </div>
+    <div class="vegastime">Vegas time · <span class="tnum" id="vt">--:--</span></div>
+  </div>
+</div>
+
+<!-- ══ DAY RAIL ══ -->
+<nav class="rail"><div class="rail-in">
+  <a class="chip" href="#fri">Friday</a>
+  <a class="chip" href="#sat">Saturday</a>
+  <a class="chip" href="#sun">Sunday</a>
+  <a class="chip" href="#crew">The Crew</a>
+  <a class="chip" href="#intel">Intel</a>
+  <a class="chip" href="#dossier">Dossier</a>
+</div></nav>
+
+<div class="wrap">
+
+  <!-- ══ SCHEDULE ══ -->
+  <section id="schedule">
+    <div class="sec-head"><h2>The Plizan</h2></div>
+    <p class="sec-note">Yes, that's how it's spelled in the planning doc. We're not fixing it. Everything below is Vegas time and updates itself <span class="suit" data-suit="♠">♠</span></p>
+
+    <div class="day" id="fri">
+      <div class="day-title" data-day="Friday"><span>Friday · Sept 18</span><em>Arrivals & the steak</em></div>
+      <ul class="items" data-day="fri"></ul>
+    </div>
+    <div class="day" id="sat">
+      <div class="day-title" data-day="Saturday"><span>Saturday · Sept 19</span><em>All roads lead to Caesars</em></div>
+      <ul class="items" data-day="sat"></ul>
+    </div>
+    <div class="day" id="sun">
+      <div class="day-title" data-day="Sunday"><span>Sunday · Sept 20</span><em>Consequences</em></div>
+      <ul class="items" data-day="sun"></ul>
+    </div>
+  </section>
+
+  <!-- ══ CREW ══ -->
+  <section id="crew">
+    <div class="sec-head"><h2>The Crew</h2></div>
+    <p class="sec-note">Five guys. One of them is getting married. Four of them have to get him to the airport on Sunday.</p>
+    <div class="card">
+      <div class="person"><div><b>Joe</b><span class="role">The groom. Takes out the trash. Won the casserole.</span></div><div class="fl">In Fri 1:00 PM<br>Out Sun 2:00 PM</div></div>
+      <div class="person"><div><b>Sanjay</b><span class="role">Captain of logistics. All dinner reservations are under his name.</span></div><div class="fl">In Fri 2:53 PM<br>Out Sun 7:00 AM</div></div>
+      <div class="person"><div><b>Derrick</b><span class="role">Has three coworkers who won't shut up about Absinthe.</span></div><div class="fl">In Fri 12:00 PM<br>Out Sun 9:50 AM</div></div>
+      <div class="person"><div><b>Jake</b><span class="role">First one in, first one out. Efficient man.</span></div><div class="fl">In Fri 10:30 AM<br>Out Sun 6:00 AM</div></div>
+      <div class="person"><div><b>Bryen</b><span class="role">Holds the Absinthe tickets. Flight details classified.</span></div><div class="fl">TBD<br>TBD</div></div>
+    </div>
+  </section>
+
+  <!-- ══ INTEL ══ -->
+  <section id="intel">
+    <div class="sec-head"><h2>Intel</h2></div>
+    <p class="sec-note">The stuff you'll actually need at 1 AM.</p>
+    <div class="grid two">
+      <div class="card">
+        <h3>Home base</h3>
+        <p>The Signature at MGM Grand</p>
+        <p class="small">Check in Fri 3:00 PM · Out Sun 11:00 AM. Connected to MGM Grand by indoor walkway, which matters more than you think at 3 AM in September.</p>
+      </div>
+      <div class="card">
+        <h3>Reservations</h3>
+        <p>All under <b>Sanjay</b>, party of 5.</p>
+        <p class="small">Delmonico Fri 7:00 PM · Bacchanal Sat 10:30 AM · Hell's Kitchen Sat 4:45 PM. Absinthe tickets are on Bryen's phone, 9:00 PM.</p>
+      </div>
+      <div class="card">
+        <h3>Money</h3>
+        <p>Everything goes in Splitwise. Same night.</p>
+        <p class="small">Bring small bills for dealers, servers and valets. Strip ATMs charge $5–$8 and know exactly what they're doing.</p>
+      </div>
+      <div class="card">
+        <h3>Free drinks</h3>
+        <p>Sit down, play something, tip a buck.</p>
+        <p class="small">Sign up for MGM Rewards and Caesars Rewards on arrival. Two days of play still earns comps <span class="suit" data-suit="♦">♦</span></p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h3>House rules</h3>
+      <ul class="rules" style="margin:8px 0 0;padding-left:18px">
+        <li>The groom does not open his wallet. Not once. Not even for water.</li>
+        <li>Nobody says the phrase "one more hand" after 2 AM. Say it, buy the round.</li>
+        <li>Saturday is an all-Caesars day. Buffet, dinner and show are in one building. Do not wander.</li>
+        <li>Hydrate. Alternate every cocktail with water. Sunday-morning-you is boarding a plane at 6 AM.</li>
+        <li>Anyone who mentions the wedding budget gets put on the 7 AM flight.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══ DOSSIER ══ -->
+  <section id="dossier">
+    <div class="sec-head"><h2>The Dossier</h2></div>
+    <p class="sec-note">Classified intelligence on the groom, gathered from an open-source wedding website. Rookie mistake, Joe.</p>
+
+    <div class="card" style="margin-bottom:12px">
+      <h3>Ask the oracle</h3>
+      <div class="oracle" id="oracle">Tap the button. Accept the outcome.</div>
+      <button class="btn" id="oracleBtn">Consult the oracle</button>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Exhibit A · 2010</h3>
+        <p>Back row of a Theory of Knowledge class. He was still eating breakfast. In the late morning.</p>
+        <p class="small">Received a confession over AOL Instant Messenger and, by his own admission, did not see it coming even slightly. <button class="btn ghost" id="aimBtn" style="margin-top:8px">Open the transcript</button></p>
+      </div>
+      <div class="card">
+        <h3>Exhibit B · the F</h3>
+        <p>He once earned an F in philosophy for goofing off too hard with the woman he is now marrying.</p>
+        <p class="small">Romantic. Expensive. Worth it, apparently.</p>
+      </div>
+      <div class="card">
+        <h3>Exhibit C · the casserole</h3>
+        <p>Won the head-to-head sweet potato casserole comparison. Still brings it up.</p>
+        <p class="small">She forgot the cinnamon. He has never once let this go <span class="suit" data-suit="♥">♥</span></p>
+      </div>
+      <div class="card">
+        <h3>Exhibit D · Santorini</h3>
+        <p>Got timer-scammed by a Greek YouTuber on the Fira–Oia hike and had to cab it.</p>
+        <p class="small">Salvaged by a black risotto at Emfasis that he will describe to you, unprompted, this weekend.</p>
+      </div>
+      <div class="card">
+        <h3>Exhibit E · the scoreboard</h3>
+        <p>They track first-to-three Dominion on a supermarket calendar. First to three, gentlemen.</p>
+        <div class="score"><span>Joe</span><button class="pill" data-s="j" data-d="-1">−</button><span class="n" id="sj">0</span><button class="pill" data-s="j" data-d="1">+</button></div>
+        <div class="score"><span>The Groomsmen</span><button class="pill" data-s="g" data-d="-1">−</button><span class="n" id="sg">0</span><button class="pill" data-s="g" data-d="1">+</button></div>
+        <p class="small" id="scoreNote">Winner buys nothing. Loser buys everything.</p>
+      </div>
+      <div class="card">
+        <h3>Exhibit F · Saturday, 8 PM</h3>
+        <p>For a solid stretch of 2020 he called her every Saturday at 8 PM sharp. Every single one.</p>
+        <p class="small">This Saturday at 8 PM you'll be at a blackjack table in Caesars. Make the call anyway. She'll love it <span class="suit" data-suit="♣">♣</span></p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px;text-align:center">
+      <p class="script" style="font-size:2rem">Catherine &amp; Joseph</p>
+      <p class="small" style="margin-top:0">Honeymoon: probably Malaysia. Favorite shared activity: pretending to be MMA fighters. Dorkiest trait: the calendar scoreboard. Worst slice pizza in New York City: ask them in person, they refuse to slander it in writing.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p class="eyebrow">Las Vegas · September 18–20 · 2026</p>
+    <p>Built by the groomsmen. Debugged by nobody.</p>
+    <p>No cinnamon was forgotten in the making of this website.</p>
+    <p class="hidden-note" id="secretFooter">🃏 Royal flush. You found all four. Nothing happens now, but we're both impressed.</p>
+    <p style="opacity:.35;font-size:.7rem">There are six secrets on this page. You've found <span id="eggCount">0</span>.</p>
+  </footer>
+</div>
+</main>
+
+<!-- AIM -->
+<div class="aim" id="aim" role="dialog" aria-label="Instant message transcript">
+  <div class="bar2"><span>ChakkoKid305 — Instant Message</span><button id="aimClose" aria-label="Close">✕</button></div>
+  <div class="msgs">
+    <p><span class="u1">catherinexo:</span> hey so this is going to sound insane</p>
+    <p><span class="u1">catherinexo:</span> i think i like you</p>
+    <p style="color:#666;font-style:italic">ChakkoKid305 is typing…</p>
+    <p style="color:#666;font-style:italic">ChakkoKid305 has stopped typing…</p>
+    <p><span class="u2">ChakkoKid305:</span> wait</p>
+    <p><span class="u2">ChakkoKid305:</span> you have crushes??</p>
+    <p style="color:#666;font-style:italic">— 9 years pass —</p>
+    <p><span class="u2">ChakkoKid305:</span> good morning 🙂</p>
+    <p style="color:#666;font-style:italic">catherinexo left this on read.</p>
+  </div>
+  <div class="away">Away message: "at a bachelor party in vegas, brb sunday"</div>
+</div>
+
+<div id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* Vegas runs on PDT (UTC−7) through Nov 1 2026, so every timestamp is pinned
+   to −07:00. The page then reads correctly from any device, any timezone. */
+var PT="-07:00";
+function T(s){return new Date(s+":00"+PT).getTime();}
+
+/* Preview any moment with ?now=2026-09-19T17:30 — useful for testing. */
+var q=new URLSearchParams(location.search), fake=q.get("now");
+var offset = fake ? (T(fake.length===16?fake:fake.slice(0,16)) - Date.now()) : 0;
+function now(){return Date.now()+offset;}
+
+var S=[
+/* FRIDAY */
+{d:"fri",s:"2026-09-18T10:30",e:"2026-09-18T11:15",t:"10:30 AM",h:"Jake lands",w:"Harry Reid International",n:"First man in. Sets the tone for everything that follows."},
+{d:"fri",s:"2026-09-18T12:00",e:"2026-09-18T12:45",t:"12:00 PM",h:"Derrick lands",w:"Harry Reid International",n:""},
+{d:"fri",s:"2026-09-18T13:00",e:"2026-09-18T13:45",t:"1:00 PM",h:"The groom lands",w:"Harry Reid International",n:"Wheels down, Captain. From here on you are cargo.",star:1},
+{d:"fri",s:"2026-09-18T14:53",e:"2026-09-18T15:00",t:"2:53 PM",h:"Sanjay lands",w:"Frontier 4891",n:"The reservations arrive."},
+{d:"fri",s:"2026-09-18T15:00",e:"2026-09-18T17:00",t:"3:00 PM",h:"Check in",w:"The Signature at MGM Grand",n:"Claim a bed. Everyone gets their own — this was negotiated at length."},
+{d:"fri",s:"2026-09-18T17:00",e:"2026-09-18T18:15",t:"5:00 PM",h:"Pregame at the room",w:"Home base",n:"Drinks cost $9 here and $25 downstairs. Do the math."},
+{d:"fri",s:"2026-09-18T18:15",e:"2026-09-18T19:00",t:"6:15 PM",h:"Roll to The Venetian",w:"~20 min rideshare",n:"Leave a buffer. The Strip does not care about your reservation."},
+{d:"fri",s:"2026-09-18T19:00",e:"2026-09-18T21:15",t:"7:00 PM",h:"Delmonico Steakhouse",w:"The Venetian · 3355 Las Vegas Blvd S",n:"Emeril's place. Table for 5 under Sanjay. Order the bone-in ribeye and stop reading this."},
+{d:"fri",s:"2026-09-18T21:15",e:"2026-09-19T00:00",t:"9:15 PM",h:"Casino & the Strip",w:"Dealer's choice",n:"Grab your players cards on the way in. Free drinks follow the seated."},
+{d:"fri",s:"2026-09-19T00:00",e:"2026-09-19T02:30",t:"Late",h:"Undocumented",w:"Somewhere on this island",n:"No itinerary survives midnight. This block is intentionally blank."},
+/* SATURDAY */
+{d:"sat",s:"2026-09-19T10:30",e:"2026-09-19T12:30",t:"10:30 AM",h:"Bacchanal Buffet",w:"Caesars Palace",n:"250+ dishes. Table for 5 under Sanjay. Pace yourself — there is a steakhouse-adjacent dinner in six hours."},
+{d:"sat",s:"2026-09-19T12:30",e:"2026-09-19T13:30",t:"12:30 PM",h:"Slow lap",w:"Caesars & the Forum",n:"Deliberate nothing time. This weekend has breathing room built in on purpose."},
+{d:"sat",s:"2026-09-19T13:30",e:"2026-09-19T15:30",t:"1:30 PM",h:"Afternoon activity",w:"To be revealed",n:"Leading candidate: the High Roller Happy Half Hour — 30 minutes, open bar, 550 feet up, sunset over the Strip.",tbd:1},
+{d:"sat",s:"2026-09-19T15:30",e:"2026-09-19T16:20",t:"3:30 PM",h:"Freshen up",w:"The Signature",n:"Shower, change, reset. Non-negotiable."},
+{d:"sat",s:"2026-09-19T16:20",e:"2026-09-19T16:45",t:"4:20 PM",h:"Head to Caesars",w:"~15 min",n:""},
+{d:"sat",s:"2026-09-19T16:45",e:"2026-09-19T18:45",t:"4:45 PM",h:"Hell's Kitchen",w:"Caesars Palace · 3570 Las Vegas Blvd S",n:"Beef Wellington. Table for 5 under Sanjay. Nobody is allowed to do the Ramsay voice at the server."},
+{d:"sat",s:"2026-09-19T18:45",e:"2026-09-19T20:40",t:"6:45 PM",h:"Casino block",w:"Caesars floor",n:"The whole reason we took the 9 PM show instead of the 7. Use it. Call Catherine at 8."},
+{d:"sat",s:"2026-09-19T20:40",e:"2026-09-19T21:00",t:"8:40 PM",h:"Line up for the show",w:"Spiegeltent, Caesars plaza",n:"Bryen has the tickets. Find Bryen."},
+{d:"sat",s:"2026-09-19T21:00",e:"2026-09-19T22:30",t:"9:00 PM",h:"ABSINTHE",w:"Caesars Palace plaza",n:"571 seats, 90 minutes, deeply inappropriate. Sit near the front at your own risk, Captain.",star:1},
+{d:"sat",s:"2026-09-19T22:30",e:"2026-09-20T03:00",t:"10:30 PM",h:"Post-show, dealer's choice",w:"Casino · pool hall · unknown",n:"The last real night. Make it count."},
+/* SUNDAY */
+{d:"sun",s:"2026-09-20T06:00",e:"2026-09-20T06:30",t:"6:00 AM",h:"Jake departs",w:"Harry Reid International",n:"Genuinely nobody should have booked this."},
+{d:"sun",s:"2026-09-20T07:00",e:"2026-09-20T07:30",t:"7:00 AM",h:"Sanjay departs",w:"Frontier 1116",n:"See above."},
+{d:"sun",s:"2026-09-20T09:50",e:"2026-09-20T10:20",t:"9:50 AM",h:"Derrick departs",w:"Harry Reid International",n:""},
+{d:"sun",s:"2026-09-20T11:00",e:"2026-09-20T11:30",t:"11:00 AM",h:"Check out",w:"The Signature",n:"Sweep the room. Someone always leaves a charger."},
+{d:"sun",s:"2026-09-20T14:00",e:"2026-09-20T14:30",t:"2:00 PM",h:"The groom flies home",w:"Harry Reid International",n:"Next stop: the aisle. No notes.",star:1}
+];
+S.forEach(function(x){x.S=T(x.s);x.E=T(x.e);});
+
+/* ── render ── */
+["fri","sat","sun"].forEach(function(d){
+  var ul=document.querySelector('.items[data-day="'+d+'"]');
+  S.filter(function(x){return x.d===d;}).forEach(function(x,i){
+    var li=document.createElement("li");
+    li.className="item";li.dataset.i=S.indexOf(x);
+    li.innerHTML='<div class="t">'+x.t+'</div>'+
+      '<h3>'+x.h+(x.star?'<span class="tag star">★</span>':'')+(x.tbd?'<span class="tag tbd">TBD</span>':'')+'<span class="slot"></span></h3>'+
+      (x.w?'<div class="where">'+x.w+'</div>':'')+
+      (x.n?'<p>'+x.n+'</p>':'')+
+      '<div class="bar" hidden><i style="width:0"></i></div>';
+    ul.appendChild(li);
+  });
+});
+
+var els=[].slice.call(document.querySelectorAll(".item"));
+var lbLabel=document.getElementById("lbLabel"),lbLine=document.getElementById("lbLine"),
+    lbMeta=document.getElementById("lbMeta"),vt=document.getElementById("vt"),
+    cD=document.getElementById("cD"),cH=document.getElementById("cH"),
+    cM=document.getElementById("cM"),cS=document.getElementById("cS");
+var vfmt=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",hour:"numeric",minute:"2-digit"});
+var p2=function(n){return String(n).padStart(2,"0");};
+
+function tick(){
+  var t=now(), live=null, next=null;
+  els.forEach(function(li){
+    var x=S[+li.dataset.i], cls="item", slot=li.querySelector(".slot"), bar=li.querySelector(".bar");
+    if(t>=x.E){cls+=" past";slot.innerHTML="";bar.hidden=true;}
+    else if(t>=x.S){cls+=" live";live=x;slot.innerHTML='<span class="tag live">Now</span>';
+      bar.hidden=false;bar.firstElementChild.style.width=Math.min(100,(t-x.S)/(x.E-x.S)*100)+"%";}
+    else{if(!next){next=x;cls+=" next";slot.innerHTML='<span class="tag next">Up next</span>';}
+      else slot.innerHTML="";bar.hidden=true;}
+    li.className=cls;
+  });
+
+  var target = next?next.S:null, label, line, meta;
+  if(live){label="Happening now";line=live.h;meta=live.w+(next?" · then "+next.h+" at "+next.t:"");}
+  else if(next && t<S[0].S){label="Doors open in";line="Vegas · "+next.h;meta="Friday "+next.t+" Vegas time";}
+  else if(next){label="Up next";line=next.h;meta=next.w+" · "+next.t;}
+  else{label="That's a wrap";line="See you at the wedding";meta="Two nights. Zero regrets. Some regrets.";}
+  lbLabel.textContent=label;lbLine.textContent=line;lbMeta.textContent=meta;
+
+  if(target){
+    var s=Math.max(0,Math.floor((target-t)/1000));
+    cD.textContent=p2(Math.floor(s/86400));cH.textContent=p2(Math.floor(s/3600)%24);
+    cM.textContent=p2(Math.floor(s/60)%60);cS.textContent=p2(s%60);
+  }else{cD.textContent=cH.textContent=cM.textContent=cS.textContent="00";}
+  vt.textContent=vfmt.format(new Date(t));
+}
+tick();setInterval(tick,1000);
+
+/* jump to whatever is happening, once */
+setTimeout(function(){
+  var el=document.querySelector(".item.live")||document.querySelector(".item.next");
+  if(el&&location.hash==="")el.scrollIntoView({block:"center",behavior:"smooth"});
+},1400);
+
+/* ── curtain ── */
+var curtain=document.getElementById("curtain"),sign=document.getElementById("sign");
+document.getElementById("lightBtn").addEventListener("click",function(){
+  sign.classList.add("lit");curtain.classList.add("out");
+  setTimeout(function(){curtain.style.display="none";},760);
+  toast("🎰 Welcome to Las Vegas, Captain.");
+});
+
+/* ── easter eggs ── */
+var found={},eggEl=document.getElementById("eggCount");
+function egg(k,msg){if(found[k])return;found[k]=1;eggEl.textContent=Object.keys(found).length;if(msg)toast(msg);}
+var tEl=document.getElementById("toast"),tTimer;
+function toast(m){tEl.textContent=m;tEl.classList.add("show");clearTimeout(tTimer);
+  tTimer=setTimeout(function(){tEl.classList.remove("show");},3600);}
+
+/* 1. the sign itself */
+var names=["CAPTAIN JOE","VIVA LAS JOE","THE CHAKKO KID","THE PLIZAN","GROOM, LOOSE"],ni=0;
+var subs=["The Chakko Kid · Final Weekend Before The Final 2",
+  "Est. back row, Theory of Knowledge, 2010",
+  "Undefeated · Sweet Potato Casserole",
+  "Two nights only · then he belongs to Catherine",
+  "Warning: laughs at own jokes, must leave table"];
+document.getElementById("neonTitle").addEventListener("click",function(){
+  ni=(ni+1)%names.length;this.textContent=names[ni];
+  document.getElementById("signSub").innerHTML=subs[ni];
+  if(ni===1)egg("sign","💡 The sign has five names. Keep tapping.");
+});
+
+/* 2. AIM transcript */
+var aim=document.getElementById("aim");
+function openAim(){aim.classList.add("show");egg("aim","💬 ChakkoKid305 is online.");}
+document.getElementById("aimBtn").addEventListener("click",openAim);
+document.getElementById("aimClose").addEventListener("click",function(){aim.classList.remove("show");});
+
+/* 3. suit hunt */
+var suits={};
+document.querySelectorAll(".suit").forEach(function(s){
+  s.setAttribute("tabindex","0");s.setAttribute("role","button");
+  var go=function(){s.classList.add("found");suits[s.dataset.suit]=1;
+    var n=Object.keys(suits).length;
+    if(n<4)toast("🂠 "+n+" of 4 suits found.");
+    else{egg("flush","🃏 Royal flush.");document.getElementById("secretFooter").classList.add("on");
+      confetti(["♠","♥","♦","♣"]);}};
+  s.addEventListener("click",go);
+  s.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});
+});
+
+/* 4. the oracle */
+var oracles=["Bet the pass line. Trust the process.",
+  "You will describe the black risotto to someone tonight. They did not ask.",
+  "Someone at this table is about to say \u201cone more hand.\u201d Prepare your wallet.",
+  "The house always wins. The groom always drinks free. Balance.",
+  "Call Catherine. It's basically Saturday at 8.",
+  "Do not do the Ramsay voice. The server has heard it. All of it.",
+  "Your Sunday flight is at 7 AM. This is a warning, not a prophecy.",
+  "Ask yourself: would the Chakko Kid double down here? He would. He'd lose, but he would.",
+  "The cinnamon was never the point.",
+  "Somewhere in this building, Bryen has your tickets."];
+document.getElementById("oracleBtn").addEventListener("click",function(){
+  document.getElementById("oracle").textContent=oracles[Math.floor(Math.random()*oracles.length)];
+  egg("oracle","🔮 The oracle has spoken.");
+});
+
+/* 5. Dominion scoreboard (in memory only — refresh resets it, like a real calendar) */
+var sc={j:0,g:0};
+document.querySelectorAll(".pill").forEach(function(b){
+  b.addEventListener("click",function(){
+    var k=b.dataset.s;sc[k]=Math.max(0,sc[k]+ +b.dataset.d);
+    document.getElementById("s"+k).textContent=sc[k];
+    if(sc[k]>=3){document.getElementById("scoreNote").textContent=
+      (k==="j"?"Joe":"The groomsmen")+" took it first-to-three. Mark the calendar.";
+      egg("dom","🏆 First to three.");confetti(["🏆","🎲","🃏"]);}
+  });
+});
+
+/* 6. type the passwords */
+var buf="",words={
+  "aim":function(){openAim();},
+  "arthur":function(){toast("📺 And I say hey! What a wonderful kind of day. (They watched a lot of Arthur.)");},
+  "risotto":function(){toast("🖤 The black risotto at Emfasis. He still talks about it. He will again tonight.");},
+  "cinnamon":function(){toast("🍠 She forgot it. He won. It has been years.");},
+  "blanket":function(){toast("🧣 She was freezing in Santorini and refused the blanket on principle.");},
+  "bloomingdales":function(){toast("🛒 Caught playing with a hand cart in the rug section. Early spice.");},
+  "dominion":function(){toast("🎴 First to three. Tracked on a supermarket calendar. Peak dorkery.");},
+  "malaysia":function(){toast("✈️ Honeymoon destination. Probably. Don't spoil it.");}
+};
+addEventListener("keydown",function(e){
+  if(e.key&&e.key.length===1){buf=(buf+e.key.toLowerCase()).slice(-14);
+    for(var w in words){if(buf.endsWith(w)){words[w]();egg("word","🔑 Secret word accepted.");buf="";break;}}}
+});
+
+/* konami */
+var K=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"],ki=0;
+addEventListener("keydown",function(e){
+  ki=(e.key===K[ki]||(e.key&&e.key.toLowerCase()===K[ki]))?ki+1:0;
+  if(ki===K.length){ki=0;egg("konami","🎰 JACKPOT. The comps are imaginary but the respect is real.");
+    confetti(["🎰","💰","🎲","🃏","💎"]);}
+});
+
+/* triple-tap Sunday */
+document.querySelectorAll(".day-title").forEach(function(h){
+  var c=0,tm;h.addEventListener("click",function(){
+    c++;clearTimeout(tm);tm=setTimeout(function(){c=0;},600);
+    if(c===3){c=0;toast(h.dataset.day==="Sunday"
+      ?"🌅 What happens Sunday stays repressed."
+      :"👀 Nothing hidden here. Try Sunday.");}
+  });
+});
+
+function confetti(chars){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  for(var i=0;i<34;i++){(function(i){setTimeout(function(){
+    var s=document.createElement("span");s.className="conf";
+    s.textContent=chars[i%chars.length];s.style.left=Math.random()*100+"vw";
+    s.style.animationDuration=(2.2+Math.random()*1.8)+"s";
+    document.body.appendChild(s);setTimeout(function(){s.remove();},4200);
+  },i*55);})(i);}
+}
+
+/* rail highlight */
+var ids=["fri","sat","sun","crew","intel","dossier"],chips=[].slice.call(document.querySelectorAll(".chip"));
+addEventListener("scroll",function(){
+  var best=0;ids.forEach(function(id,i){var el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<160)best=i;});
+  chips.forEach(function(c,i){c.setAttribute("aria-current",i===best?"true":"false");});
+},{passive:true});
+
+console.log("%cCAPTAIN JOE'S VEGAS WEEKEND","font:700 20px sans-serif;color:#FF3D7F");
+console.log("Six secrets. Try the arrow keys, tap the sign, and type: aim · arthur · risotto · cinnamon · blanket · bloomingdales · dominion · malaysia");
+console.log("Preview any moment: add ?now=2026-09-19T21:15 to the URL.");
+})();
+</script>
+</body>
+</html>
