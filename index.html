@@ -331,7 +331,7 @@ footer p{font-size:.8rem;color:var(--dim);margin:6px 0}
     <p class="sec-note">Five guys. One of them is getting married. Four of them have to get him to the airport on Sunday.</p>
     <div class="card">
       <div class="person"><div><b>Joe</b><span class="role">The groom. Takes out the trash. Won the casserole.</span></div><div class="fl">In Fri 1:00 PM<br>Out Sun 2:00 PM</div></div>
-      <div class="person"><div><b>Sanjay</b><span class="role">Captain of logistics. All dinner reservations are under his name.</span></div><div class="fl">In Fri 2:53 PM<br>Out Sun 7:00 AM</div></div>
+      <div class="person"><div><b>Sanjay</b><span class="role">Captain of logistics. All dinner reservations are under his name.</span></div><div class="fl">In Fri 10:00 AM<br>Out Sun 7:30 AM</div></div>
       <div class="person"><div><b>Derrick</b><span class="role">Has three coworkers who won't shut up about Absinthe.</span></div><div class="fl">In Fri 12:00 PM<br>Out Sun 9:50 AM</div></div>
       <div class="person"><div><b>Jake</b><span class="role">First one in, first one out. Efficient man.</span></div><div class="fl">In Fri 10:30 AM<br>Out Sun 6:00 AM</div></div>
       <div class="person"><div><b>Bryen</b><span class="role">Holds the Absinthe tickets. Flight details classified.</span></div><div class="fl">TBD<br>TBD</div></div>
@@ -372,7 +372,7 @@ footer p{font-size:.8rem;color:var(--dim);margin:6px 0}
         <li>Nobody says the phrase "one more hand" after 2 AM. Say it, buy the round.</li>
         <li>Saturday is an all-Caesars day. Buffet, dinner and show are in one building. Do not wander.</li>
         <li>Hydrate. Alternate every cocktail with water. Sunday-morning-you is boarding a plane at 6 AM.</li>
-        <li>Anyone who mentions the wedding budget gets put on the 7 AM flight.</li>
+        <li>Anyone who mentions the wedding budget gets put on the 7:30 AM flight.</li>
       </ul>
     </div>
   </section>
@@ -474,10 +474,10 @@ function now(){return Date.now()+offset;}
 
 var S=[
 /* FRIDAY */
+{d:"fri",s:"2026-09-18T10:00",e:"2026-09-18T10:45",t:"10:00 AM",h:"Sanjay lands",w:"Frontier 4891",n:"The reservations arrive."},
 {d:"fri",s:"2026-09-18T10:30",e:"2026-09-18T11:15",t:"10:30 AM",h:"Jake lands",w:"Harry Reid International",n:"First man in. Sets the tone for everything that follows."},
 {d:"fri",s:"2026-09-18T12:00",e:"2026-09-18T12:45",t:"12:00 PM",h:"Derrick lands",w:"Harry Reid International",n:""},
 {d:"fri",s:"2026-09-18T13:00",e:"2026-09-18T13:45",t:"1:00 PM",h:"The groom lands",w:"Harry Reid International",n:"Wheels down, Captain. From here on you are cargo.",star:1},
-{d:"fri",s:"2026-09-18T14:53",e:"2026-09-18T15:00",t:"2:53 PM",h:"Sanjay lands",w:"Frontier 4891",n:"The reservations arrive."},
 {d:"fri",s:"2026-09-18T15:00",e:"2026-09-18T17:00",t:"3:00 PM",h:"Check in",w:"The Signature at MGM Grand",n:"Claim a bed. Everyone gets their own — this was negotiated at length."},
 {d:"fri",s:"2026-09-18T17:00",e:"2026-09-18T18:15",t:"5:00 PM",h:"Pregame at the room",w:"Home base",n:"Drinks cost $9 here and $25 downstairs. Do the math."},
 {d:"fri",s:"2026-09-18T18:15",e:"2026-09-18T19:00",t:"6:15 PM",h:"Roll to The Venetian",w:"~20 min rideshare",n:"Leave a buffer. The Strip does not care about your reservation."},
@@ -497,7 +497,7 @@ var S=[
 {d:"sat",s:"2026-09-19T22:30",e:"2026-09-20T03:00",t:"10:30 PM",h:"Post-show, dealer's choice",w:"Casino · pool hall · unknown",n:"The last real night. Make it count."},
 /* SUNDAY */
 {d:"sun",s:"2026-09-20T06:00",e:"2026-09-20T06:30",t:"6:00 AM",h:"Jake departs",w:"Harry Reid International",n:"Genuinely nobody should have booked this."},
-{d:"sun",s:"2026-09-20T07:00",e:"2026-09-20T07:30",t:"7:00 AM",h:"Sanjay departs",w:"Frontier 1116",n:"See above."},
+{d:"sun",s:"2026-09-20T07:30",e:"2026-09-20T08:00",t:"7:30 AM",h:"Sanjay departs",w:"Frontier 1116",n:"See above."},
 {d:"sun",s:"2026-09-20T09:50",e:"2026-09-20T10:20",t:"9:50 AM",h:"Derrick departs",w:"Harry Reid International",n:""},
 {d:"sun",s:"2026-09-20T11:00",e:"2026-09-20T11:30",t:"11:00 AM",h:"Check out",w:"The Signature",n:"Sweep the room. Someone always leaves a charger."},
 {d:"sun",s:"2026-09-20T14:00",e:"2026-09-20T14:30",t:"2:00 PM",h:"The groom flies home",w:"Harry Reid International",n:"Next stop: the aisle. No notes.",star:1}
@@ -615,7 +615,7 @@ var oracles=["Bet the pass line. Trust the process.",
   "The house always wins. The groom always drinks free. Balance.",
   "Call Catherine. It's basically Saturday at 8.",
   "Do not do the Ramsay voice. The server has heard it. All of it.",
-  "Your Sunday flight is at 7 AM. This is a warning, not a prophecy.",
+  "Your Sunday flight is at 7:30 AM. This is a warning, not a prophecy.",
   "Ask yourself: would the Chakko Kid double down here? He would. He'd lose, but he would.",
   "The cinnamon was never the point.",
   "Somewhere in this building, Bryen has your tickets."];
