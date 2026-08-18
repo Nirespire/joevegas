@@ -1,0 +1,39 @@
+/* ─────────────────────────────────────────────────────────────
+   CAPTAIN JOE'S VEGAS WEEKEND — shared design tokens
+   Design direction: 1c "1996 modern show poster".
+
+   This file is the single source of truth for the look of BOTH
+   the site (/index.html) and the print flyer (/flyer/index.html).
+   Change a value here and both move together.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  /* ── colour ── */
+  --ink:#0B0509;        /* page background, flat — no gradients, no glow */
+  --cream:#F4E9D8;      /* primary text, QR plate */
+  --pink:#FF3D7F;       /* accent headline line, date band, rule numerals */
+  --gold:#FFD166;       /* eyebrow, section headers, script kicker */
+  --white:#fff;         /* text on the pink band */
+
+  --t82:rgba(244,233,216,.82);  /* house rules */
+  --t78:rgba(244,233,216,.78);  /* intro paragraph */
+  --t70:rgba(244,233,216,.70);  /* role descriptions */
+  --t60:rgba(244,233,216,.60);  /* sub-labels */
+  --t45:rgba(244,233,216,.45);  /* "No. 001" */
+  --t40:rgba(244,233,216,.40);  /* footer credit */
+  --hair:rgba(244,233,216,.2);  /* section + footer rules */
+
+  /* ── type ── */
+  --head:"Anton","Arial Narrow",Impact,sans-serif;
+  --body:"Space Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --script:"Great Vibes","Snell Roundhand",cursive;
+
+  /* tracking, straight off the flyer */
+  --tr-eyebrow:.24em;
+  --tr-header:.26em;
+  --tr-band:.2em;
+  --tr-label:.16em;
+
+  /* ── geometry ── */
+  --gutter:46px;        /* flyer page gutter; the site scales this down */
+  --radius:0;           /* square corners throughout — the flyer has no radii */
+}

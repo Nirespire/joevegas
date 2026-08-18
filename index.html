@@ -6,219 +6,221 @@
 <title>Captain Joe's Vegas Weekend</title>
 <meta name="description" content="Two nights. Five guys. One groom. Live itinerary.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#120A16">
+<meta name="theme-color" content="#0B0509">
 <meta property="og:title" content="Captain Joe's Vegas Weekend">
 <meta property="og:description" content="September 18–20, 2026. The plizan, revealed.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎰</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Monoton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
 <style>
-/* ─────────────────────────────────────────────
-   CAPTAIN JOE — tokens
-   ink    velvet plum-black, the room the sign hangs in
-   felt   card-table green
-   neon   marquee pink
-   bulb   marquee bulb gold
-   cream  aged paper
-   ox     oxblood banding
-   ───────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   CAPTAIN JOE — site styles, cut to match the flyer.
+   Direction 1c, "1996 modern show poster": flat ink page, Anton
+   condensed headline, pink accent band, gold hairline headers,
+   square corners, no glow. Colours and type live in tokens.css,
+   shared with /flyer/index.html — edit them there.
+   ───────────────────────────────────────────────────────────── */
 :root{
-  --ink:#120A16;
-  --ink-2:#1B0F20;
-  --panel:#1E1224;
-  --felt:#12402F;
-  --neon:#FF3D7F;
-  --bulb:#FFD166;
-  --cream:#F4E9D8;
-  --ox:#5A1024;
-  --dim:rgba(244,233,216,.55);
-  --hair:rgba(255,209,102,.22);
-  --rad:14px;
-  --pad:clamp(16px,4.5vw,28px);
-  --display:"Monoton",system-ui,sans-serif;
-  --head:"Anton","Arial Narrow",Impact,sans-serif;
-  --body:"Space Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --script:"Great Vibes","Snell Roundhand",cursive;
+  --pad:clamp(18px,5.2vw,var(--gutter));   /* the flyer's 46px gutter, scaled down on phones */
+  --measure:820px;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--ink);color:var(--cream);font-family:var(--body);
   line-height:1.5;overflow-x:hidden;
-  background-image:
-    radial-gradient(120% 70% at 50% -10%, rgba(255,61,127,.16), transparent 60%),
-    radial-gradient(90% 50% at 50% 105%, rgba(18,64,47,.5), transparent 65%);
-  background-attachment:fixed;
 }
-::selection{background:var(--neon);color:#fff}
-a{color:var(--bulb);text-underline-offset:3px}
+::selection{background:var(--pink);color:var(--white)}
+a{color:var(--gold);text-underline-offset:3px}
+a:hover{color:var(--pink)}
 a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
-  outline:2px solid var(--neon);outline-offset:3px;border-radius:6px}
-.wrap{max-width:760px;margin:0 auto;padding:0 var(--pad)}
-.eyebrow{font-family:var(--head);letter-spacing:.22em;text-transform:uppercase;
-  font-size:.68rem;color:var(--bulb);opacity:.8}
-.script{font-family:var(--script);font-size:1.5em;line-height:1;color:var(--neon)}
+  outline:2px solid var(--pink);outline-offset:3px;border-radius:0}
+img,svg{max-width:100%}
+.wrap{max-width:var(--measure);margin:0 auto;padding:0 var(--pad)}
 .tnum{font-variant-numeric:tabular-nums}
 
+/* the flyer's small caps: Anton, uppercase, wide tracking, gold */
+.eyebrow{font-family:var(--head);text-transform:uppercase;letter-spacing:var(--tr-eyebrow);
+  font-size:clamp(.62rem,2.4vw,.82rem);color:var(--gold)}
+.script{font-family:var(--script);line-height:1;color:var(--gold)}
+
 /* ── curtain ───────────────────────────────── */
-#curtain{position:fixed;inset:0;z-index:99;background:#08050B;display:grid;
-  place-items:center;text-align:center;padding:24px;transition:opacity .7s ease}
+#curtain{position:fixed;inset:0;z-index:99;background:var(--ink);display:grid;
+  place-items:center;text-align:center;padding:var(--pad);transition:opacity .7s ease}
 #curtain.out{opacity:0;pointer-events:none}
-#curtain .dark-sign{font-family:var(--display);font-size:clamp(2.1rem,10vw,4rem);
-  color:#2B2130;line-height:1.15;letter-spacing:.02em}
-#lightBtn{margin-top:34px;background:none;border:1px solid rgba(255,209,102,.35);
-  color:var(--bulb);font-family:var(--head);letter-spacing:.2em;text-transform:uppercase;
-  font-size:.85rem;padding:15px 26px;border-radius:100px;cursor:pointer;
-  animation:breathe 2.4s ease-in-out infinite}
-#lightBtn:hover{background:rgba(255,209,102,.09)}
-@keyframes breathe{50%{box-shadow:0 0 30px rgba(255,209,102,.28)}}
-#curtain small{display:block;margin-top:18px;color:#4A3C52;font-size:.72rem;letter-spacing:.1em}
+#curtain .dark-sign{font-family:var(--head);text-transform:uppercase;
+  font-size:clamp(2.2rem,12vw,5rem);line-height:.9;letter-spacing:-.02em;
+  color:rgba(244,233,216,.16)}
+#curtain .dark-sign span{display:block;color:rgba(255,61,127,.2)}
+#lightBtn{margin-top:34px;background:var(--pink);border:0;color:var(--white);
+  font-family:var(--head);letter-spacing:var(--tr-label);text-transform:uppercase;
+  font-size:.9rem;padding:15px 26px;border-radius:0;cursor:pointer}
+#lightBtn:hover{background:#ff5a92}
+#curtain small{display:block;margin-top:20px;color:var(--t45);font-size:.72rem;
+  font-family:var(--head);letter-spacing:var(--tr-eyebrow);text-transform:uppercase}
 
-/* ── the marquee (signature element) ───────── */
-.marquee{position:relative;margin:22px 0 8px;padding:clamp(26px,7vw,42px) clamp(16px,5vw,34px);
-  border-radius:6px;background:
-    linear-gradient(180deg,rgba(90,16,36,.5),rgba(18,10,22,.85));
-  border:1px solid rgba(255,209,102,.3);
-  box-shadow:0 24px 70px -30px #000, inset 0 0 60px rgba(90,16,36,.5)}
-.bulbs{position:absolute;pointer-events:none}
-.bulbs.t,.bulbs.b{left:8px;right:8px;height:8px}
-.bulbs.t{top:-4px}.bulbs.b{bottom:-4px}
-.bulbs.l,.bulbs.r{top:8px;bottom:8px;width:8px}
-.bulbs.l{left:-4px}.bulbs.r{right:-4px}
-.bulbs i{position:absolute;inset:0;display:block;
-  background-image:radial-gradient(circle at center,var(--bulb) 0 2px,transparent 2.6px);
-  background-size:16px 16px;background-position:0 center;opacity:.28}
-.bulbs.l i,.bulbs.r i{background-size:16px 16px;background-position:center 0}
-.bulbs i.odd{background-position:8px center}
-.bulbs.l i.odd,.bulbs.r i.odd{background-position:center 8px}
-.lit .bulbs i{animation:chase 1.1s steps(1,end) infinite;filter:drop-shadow(0 0 4px rgba(255,209,102,.9))}
-.lit .bulbs i.odd{animation-delay:.55s}
-@keyframes chase{0%,49%{opacity:1}50%,100%{opacity:.2}}
+/* ── poster header (the flyer, made live) ──── */
+.poster{padding:clamp(22px,5vw,40px) 0 0}
+.poster-rule{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.poster-rule .no{color:var(--t45)}
+.kicker{font-family:var(--script);font-size:clamp(1.5rem,7vw,2.25rem);color:var(--gold);
+  line-height:1;margin:clamp(18px,4vw,30px) 0 6px}
+.headline{display:block;width:100%;margin:0;padding:0;border:0;background:none;
+  text-align:left;font-family:var(--head);text-transform:uppercase;
+  font-size:clamp(2.7rem,13.2vw,6.5rem);line-height:.86;letter-spacing:-.02em;
+  color:var(--cream);cursor:pointer;user-select:none}
+.headline.accent{color:var(--pink);cursor:default}
+.sign-sub{margin-top:14px;font-family:var(--head);text-transform:uppercase;
+  letter-spacing:var(--tr-label);font-size:clamp(.7rem,2.8vw,.9rem);color:var(--t60)}
+.intro{margin:10px 0 0;max-width:640px;font-size:clamp(.95rem,3.6vw,1.06rem);
+  line-height:1.45;color:var(--t78);text-wrap:pretty}
 
-.sign-top{text-align:center;font-family:var(--head);letter-spacing:.3em;
-  text-transform:uppercase;font-size:.7rem;color:var(--bulb);opacity:.85}
-.neon{display:block;text-align:center;font-family:var(--display);
-  font-size:clamp(2.3rem,11.5vw,4.6rem);line-height:1.05;margin:14px 0 6px;
-  color:#fff;cursor:pointer;user-select:none;background:none;border:0;width:100%;padding:0}
-.lit .neon{
-  color:#FFF0F6;
-  text-shadow:0 0 6px #fff,0 0 16px var(--neon),0 0 34px var(--neon),
-    0 0 64px rgba(255,61,127,.75),0 2px 0 rgba(0,0,0,.4);
-  animation:flicker 7s linear infinite}
-@keyframes flicker{0%,96%,100%{opacity:1}96.5%{opacity:.4}97%{opacity:1}97.6%{opacity:.55}98.2%{opacity:1}}
-.sign-sub{text-align:center;font-family:var(--head);letter-spacing:.18em;
-  text-transform:uppercase;font-size:clamp(.72rem,2.8vw,.9rem);color:var(--cream);opacity:.75}
+/* pink date band — lifted straight off the flyer */
+.band{margin-top:clamp(22px,5vw,30px);background:var(--pink);color:var(--white);
+  padding:16px 22px;display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;font-family:var(--head);text-transform:uppercase;
+  letter-spacing:var(--tr-band);font-size:clamp(.8rem,3.2vw,1.25rem)}
 
-/* changeable-letter row */
-.letterboard{margin-top:22px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
-  padding:14px 10px;text-align:center;background:repeating-linear-gradient(180deg,
-    rgba(0,0,0,.35) 0 22px, rgba(255,255,255,.02) 22px 23px)}
-.lb-label{font-family:var(--head);letter-spacing:.24em;font-size:.62rem;color:var(--neon);
-  text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:7px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--neon);
-  box-shadow:0 0 10px var(--neon);animation:pulse 1.6s ease-in-out infinite}
-@keyframes pulse{50%{opacity:.25;transform:scale(.75)}}
-.lb-line{font-family:var(--head);text-transform:uppercase;letter-spacing:.05em;
-  font-size:clamp(1.15rem,5.4vw,1.75rem);margin-top:7px;line-height:1.15}
-.lb-meta{font-size:.8rem;color:var(--dim);margin-top:5px}
-
-/* countdown */
-.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:20px}
-.cell{background:rgba(0,0,0,.42);border:1px solid var(--hair);border-radius:9px;padding:9px 2px 7px;text-align:center}
-.cell b{display:block;font-family:var(--head);font-size:clamp(1.5rem,7.5vw,2.3rem);
-  line-height:1;color:var(--bulb);font-variant-numeric:tabular-nums}
-.cell span{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
-.vegastime{text-align:center;margin-top:12px;font-size:.72rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--dim)}
+/* ── now showing: letterboard + countdown ──── */
+.board{margin-top:clamp(24px,5vw,34px);border-top:1px solid var(--hair);
+  border-bottom:1px solid var(--hair);padding:18px 0}
+.lb-label{font-family:var(--head);text-transform:uppercase;letter-spacing:var(--tr-header);
+  font-size:.66rem;color:var(--gold);display:flex;align-items:center;gap:8px}
+.dot{width:7px;height:7px;background:var(--pink);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.2}}
+.lb-line{font-family:var(--head);text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(1.3rem,6vw,2rem);margin-top:9px;line-height:1.05}
+.lb-meta{font-size:.86rem;color:var(--t60);margin-top:6px}
+.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:18px;
+  background:var(--hair);border:1px solid var(--hair)}
+.cell{background:var(--ink);padding:12px 2px 9px;text-align:center}
+.cell b{display:block;font-family:var(--head);font-size:clamp(1.6rem,8vw,2.6rem);
+  line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.cell span{font-size:.58rem;letter-spacing:var(--tr-band);text-transform:uppercase;color:var(--t45)}
+.vegastime{margin-top:12px;font-family:var(--head);letter-spacing:var(--tr-label);
+  text-transform:uppercase;font-size:.72rem;color:var(--t45)}
 
 /* ── sticky day rail ───────────────────────── */
-.rail{position:sticky;top:0;z-index:20;background:rgba(18,10,22,.93);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--hair);margin-top:26px}
-.rail-in{display:flex;gap:6px;overflow-x:auto;padding:10px var(--pad);scrollbar-width:none;
-  max-width:760px;margin:0 auto}
+.rail{position:sticky;top:0;z-index:20;background:var(--ink);
+  border-bottom:1px solid var(--hair);margin-top:clamp(26px,5vw,34px)}
+.rail-in{display:flex;gap:0;overflow-x:auto;padding:0;scrollbar-width:none;
+  max-width:var(--measure);margin:0 auto;padding-inline:var(--pad)}
 .rail-in::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;background:transparent;border:1px solid var(--hair);color:var(--cream);
-  font-family:var(--head);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;
-  padding:8px 14px;border-radius:100px;cursor:pointer;text-decoration:none}
-.chip[aria-current="true"]{background:var(--neon);border-color:var(--neon);color:#fff}
+.chip{flex:0 0 auto;background:transparent;border:0;border-bottom:2px solid transparent;
+  color:var(--t60);font-family:var(--head);letter-spacing:var(--tr-label);
+  text-transform:uppercase;font-size:.74rem;padding:14px 14px 12px;cursor:pointer;
+  text-decoration:none}
+.chip:hover{color:var(--cream)}
+.chip[aria-current="true"]{color:var(--pink);border-bottom-color:var(--pink)}
 
 /* ── sections ──────────────────────────────── */
-section{padding:38px 0 6px}
-.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
-.sec-head h2{font-family:var(--head);text-transform:uppercase;letter-spacing:.06em;
-  font-size:clamp(1.5rem,6.5vw,2.1rem);margin:0}
-.sec-note{color:var(--dim);font-size:.86rem;margin:0 0 20px}
+section{padding:clamp(34px,7vw,48px) 0 6px}
+.sec-head{border-bottom:1px solid var(--hair);padding-bottom:10px}
+.sec-head h2{font-family:var(--head);text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(1.7rem,7.5vw,2.6rem);margin:0;line-height:1}
+.sec-note{color:var(--t70);font-size:.92rem;margin:14px 0 22px;max-width:640px;text-wrap:pretty}
 
 /* ── timeline ──────────────────────────────── */
-.day{margin-bottom:30px}
-.day-title{font-family:var(--head);text-transform:uppercase;letter-spacing:.18em;
-  font-size:.85rem;color:var(--bulb);padding-bottom:8px;border-bottom:1px solid var(--hair);
-  display:flex;justify-content:space-between;align-items:baseline;cursor:default}
-.day-title em{font-style:normal;color:var(--dim);font-family:var(--body);letter-spacing:0;font-size:.75rem}
-.items{list-style:none;margin:0;padding:0 0 0 20px;position:relative}
-.items:before{content:"";position:absolute;left:4px;top:12px;bottom:12px;width:1px;
-  background:linear-gradient(180deg,transparent,var(--hair) 12%,var(--hair) 88%,transparent)}
-.item{position:relative;padding:15px 0;border-bottom:1px solid rgba(255,209,102,.08)}
+.day{margin-bottom:34px}
+.day-title{font-family:var(--head);text-transform:uppercase;letter-spacing:var(--tr-header);
+  font-size:.78rem;color:var(--gold);padding-bottom:10px;border-bottom:1px solid var(--hair);
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;cursor:default}
+.day-title em{font-style:normal;color:var(--t45);font-family:var(--body);
+  letter-spacing:0;font-size:.78rem;text-transform:none}
+.items{list-style:none;margin:14px 0 0;padding:0 0 0 22px;position:relative}
+.items:before{content:"";position:absolute;left:3px;top:14px;bottom:14px;width:1px;background:var(--hair)}
+.item{position:relative;padding:15px 0;border-bottom:1px solid rgba(244,233,216,.08)}
 .item:last-child{border-bottom:0}
-.item:before{content:"";position:absolute;left:-20px;top:22px;width:9px;height:9px;
-  border-radius:50%;background:var(--ink);border:1px solid var(--bulb);opacity:.55}
-.item .t{font-family:var(--head);letter-spacing:.08em;font-size:.8rem;color:var(--bulb);
-  font-variant-numeric:tabular-nums}
-.item h3{margin:3px 0 2px;font-size:1.06rem;font-weight:700;letter-spacing:-.01em}
-.item p{margin:2px 0 0;font-size:.87rem;color:var(--dim)}
-.item .where{font-size:.82rem;color:rgba(244,233,216,.72)}
-.item.past{opacity:.32}
+.item:before{content:"";position:absolute;left:-22px;top:22px;width:7px;height:7px;
+  background:var(--hair)}
+.item .t{font-family:var(--head);letter-spacing:var(--tr-band);font-size:.76rem;
+  color:var(--gold);font-variant-numeric:tabular-nums}
+.item h3{margin:4px 0 2px;font-family:var(--head);text-transform:uppercase;
+  font-size:clamp(1.05rem,4.4vw,1.35rem);letter-spacing:-.01em;font-weight:400}
+.item p{margin:3px 0 0;font-size:.88rem;color:var(--t60)}
+.item .where{font-size:.84rem;color:var(--t70)}
+.item.past{opacity:.3}
 .item.past .t{text-decoration:line-through}
-.item.live{background:linear-gradient(90deg,rgba(255,61,127,.15),transparent 70%);
-  border-radius:10px;padding-left:12px;margin-left:-12px;border-bottom-color:transparent}
-.item.live:before{left:-8px;background:var(--neon);border-color:var(--neon);opacity:1;
-  box-shadow:0 0 14px var(--neon)}
-.item.live h3{color:#fff}
-.item.next:before{opacity:1;background:var(--bulb)}
-.tag{display:inline-block;font-family:var(--head);font-size:.58rem;letter-spacing:.2em;
-  text-transform:uppercase;padding:3px 8px;border-radius:100px;margin-left:8px;vertical-align:2px}
-.tag.live{background:var(--neon);color:#fff}
-.tag.next{background:var(--bulb);color:#2A1206}
-.tag.tbd{border:1px solid var(--hair);color:var(--bulb)}
-.tag.star{background:var(--felt);color:var(--bulb);border:1px solid var(--hair)}
-.bar{height:3px;background:rgba(255,255,255,.12);border-radius:3px;margin-top:10px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.item.live{border-left:2px solid var(--pink);padding-left:14px;margin-left:-24px;
+  padding-right:2px}
+.item.live:before{left:-14px;background:var(--pink)}
+.item.live h3{color:var(--white)}
+.item.next:before{background:var(--gold)}
+.tag{display:inline-block;font-family:var(--head);font-size:.56rem;letter-spacing:var(--tr-band);
+  text-transform:uppercase;padding:4px 8px;margin-left:9px;vertical-align:3px}
+.tag.live{background:var(--pink);color:var(--white)}
+.tag.next{background:var(--gold);color:var(--ink)}
+.tag.tbd{border:1px solid var(--hair);color:var(--gold)}
+.tag.star{border:1px solid var(--hair);color:var(--pink)}
+.bar{height:2px;background:var(--hair);margin-top:12px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pink)}
 
 /* ── cards ─────────────────────────────────── */
-.grid{display:grid;gap:12px}
+.grid{display:grid;gap:1px;background:var(--hair);border:1px solid var(--hair)}
 @media(min-width:620px){.grid.two{grid-template-columns:1fr 1fr}}
-.card{background:var(--panel);border:1px solid var(--hair);border-radius:var(--rad);padding:16px}
-.card h3{margin:0 0 6px;font-family:var(--head);text-transform:uppercase;letter-spacing:.1em;
-  font-size:.86rem;color:var(--bulb)}
-.card p{margin:0;font-size:.9rem;color:rgba(244,233,216,.82)}
-.card .small{font-size:.8rem;color:var(--dim);margin-top:6px}
-.person{display:flex;justify-content:space-between;gap:12px;padding:11px 0;
-  border-bottom:1px solid rgba(255,209,102,.1)}
-.person:last-child{border-bottom:0}
-.person b{font-size:.98rem;font-weight:700}
-.person .role{display:block;font-size:.76rem;color:var(--dim)}
-.person .fl{text-align:right;font-size:.76rem;color:var(--dim);white-space:nowrap;
-  font-variant-numeric:tabular-nums}
-.btn{display:inline-block;background:var(--neon);color:#fff;text-decoration:none;border:0;
-  font-family:var(--head);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;
-  padding:11px 16px;border-radius:100px;cursor:pointer}
-.btn.ghost{background:transparent;border:1px solid var(--hair);color:var(--bulb)}
-.suit{color:var(--neon);cursor:pointer;padding:0 1px;transition:transform .2s}
-.suit:hover{transform:scale(1.4);display:inline-block}
-.suit.found{color:var(--bulb);text-shadow:0 0 12px var(--bulb)}
-.rules li{margin-bottom:9px;font-size:.9rem;color:rgba(244,233,216,.82)}
-.oracle{min-height:3.2em;display:grid;place-items:center;text-align:center;font-size:1rem;
-  padding:14px;border:1px dashed var(--hair);border-radius:10px;margin-bottom:12px}
-.score{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0}
-.score .n{font-family:var(--head);font-size:1.6rem;color:var(--bulb);min-width:1.4em;text-align:center}
-.pill{background:rgba(0,0,0,.35);border:1px solid var(--hair);color:var(--bulb);width:34px;height:34px;
-  border-radius:50%;font-size:1.1rem;cursor:pointer;line-height:1}
+.card{background:var(--ink);border:1px solid var(--hair);border-radius:var(--radius);padding:18px}
+.grid .card{border:0}
+.card h3{margin:0 0 12px;font-family:var(--head);text-transform:uppercase;
+  letter-spacing:var(--tr-header);font-size:.78rem;color:var(--gold);
+  padding-bottom:10px;border-bottom:1px solid var(--hair)}
+.card p{margin:0;font-size:.94rem;color:var(--t82)}
+.card .small{font-size:.85rem;color:var(--t60);margin-top:7px}
 
-/* aim window */
+/* the company list, same rhythm as the flyer's left column */
+.person{display:flex;justify-content:space-between;gap:14px;padding:12px 0;
+  border-bottom:1px solid rgba(244,233,216,.1)}
+.person:last-child{border-bottom:0}
+.person b{display:block;font-family:var(--head);text-transform:uppercase;font-weight:400;
+  font-size:1.28rem;line-height:1.1}
+.person .role{display:block;font-size:.84rem;color:var(--t70);margin-top:2px}
+.person .fl{text-align:right;font-size:.74rem;color:var(--t45);white-space:nowrap;
+  font-variant-numeric:tabular-nums;font-family:var(--head);letter-spacing:.08em;
+  text-transform:uppercase}
+
+.btn{display:inline-block;background:var(--pink);color:var(--white);text-decoration:none;
+  border:0;font-family:var(--head);letter-spacing:var(--tr-label);text-transform:uppercase;
+  font-size:.76rem;padding:12px 18px;border-radius:0;cursor:pointer}
+.btn:hover{background:#ff5a92;color:var(--white)}
+.btn.ghost{background:transparent;border:1px solid var(--hair);color:var(--gold)}
+.btn.ghost:hover{background:transparent;border-color:var(--gold);color:var(--gold)}
+
+.suit{color:var(--pink);cursor:pointer;padding:0 1px;transition:transform .2s}
+.suit:hover{transform:scale(1.4);display:inline-block}
+.suit.found{color:var(--gold)}
+
+/* house rules, numbered like the flyer */
+.rules{display:grid;gap:11px;margin:0;padding:0;list-style:none;
+  font-size:.94rem;line-height:1.4;color:var(--t82);counter-reset:rule}
+.rules li{counter-increment:rule}
+.rules li:before{content:counter(rule,decimal-leading-zero);color:var(--pink);
+  font-family:var(--head);margin-right:9px}
+
+.oracle{min-height:3.4em;display:grid;place-items:center;text-align:center;
+  font-size:1rem;padding:16px;border:1px solid var(--hair);margin-bottom:14px;color:var(--t82)}
+.score{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;
+  font-family:var(--head);text-transform:uppercase;letter-spacing:var(--tr-label);font-size:.86rem}
+.score .n{font-family:var(--head);font-size:1.7rem;color:var(--gold);min-width:1.4em;
+  text-align:center;letter-spacing:0}
+.pill{background:transparent;border:1px solid var(--hair);color:var(--gold);width:34px;height:34px;
+  border-radius:0;font-size:1.1rem;cursor:pointer;line-height:1}
+.pill:hover{border-color:var(--gold)}
+
+/* ── flyer callout ─────────────────────────── */
+.flyer-card{display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  border:1px solid var(--hair);padding:18px;margin-top:14px}
+.flyer-card .qr{display:block;background:var(--cream);padding:5px;shape-rendering:crispEdges;flex:0 0 auto}
+.flyer-card .label{font-family:var(--head);text-transform:uppercase;
+  letter-spacing:var(--tr-label);font-size:1.05rem}
+.flyer-card .sub{font-size:.88rem;color:var(--t60);margin-top:2px}
+.flyer-card .txt{flex:1 1 220px;min-width:0}
+.flyer-card .go{margin-left:auto;flex:0 0 auto}
+
+/* aim window — 1996, on theme */
 .aim{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);z-index:80;
   width:min(340px,92vw);background:#D6D3CE;color:#000;border:2px outset #fff;
-  border-radius:3px;font-family:"Segoe UI",Tahoma,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.7);
+  font-family:"Segoe UI",Tahoma,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.7);
   opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease}
 .aim.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
 .aim .bar2{background:linear-gradient(180deg,#2A5BC4,#12357F);color:#fff;font-size:.76rem;
@@ -233,8 +235,8 @@ section{padding:38px 0 6px}
 
 /* toast */
 #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
-  background:var(--felt);border:1px solid var(--bulb);color:var(--cream);padding:12px 18px;
-  border-radius:100px;font-size:.86rem;z-index:90;opacity:0;transition:.3s;max-width:90vw;text-align:center}
+  background:var(--ink);border:1px solid var(--pink);color:var(--cream);padding:12px 18px;
+  border-radius:0;font-size:.86rem;z-index:90;opacity:0;transition:.3s;max-width:90vw;text-align:center}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* confetti */
@@ -242,10 +244,23 @@ section{padding:38px 0 6px}
   animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.1}}
 
-footer{margin-top:40px;padding:30px 0 60px;border-top:1px solid var(--hair);text-align:center}
-footer p{font-size:.8rem;color:var(--dim);margin:6px 0}
+footer{margin-top:48px;padding:26px 0 60px;border-top:1px solid var(--hair);
+  display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap}
+footer .credit{margin-left:auto;text-align:right;font-size:.82rem;color:var(--t40);line-height:1.4}
+footer p{font-size:.84rem;color:var(--t60);margin:6px 0}
+footer p.eyebrow{margin-bottom:10px}
 .hidden-note{opacity:0;transition:opacity .5s}
 .hidden-note.on{opacity:1}
+
+/* the lights-up reveal: a lift, not a glow */
+#sign .kicker,#sign .headline,#sign .sign-sub,#sign .intro,#sign .band{
+  transition:opacity .6s ease,transform .6s ease}
+#sign:not(.lit) .kicker,#sign:not(.lit) .headline,#sign:not(.lit) .sign-sub,
+#sign:not(.lit) .intro,#sign:not(.lit) .band{opacity:.001;transform:translateY(14px)}
+#sign.lit .headline{transition-delay:.06s}
+#sign.lit .sign-sub{transition-delay:.12s}
+#sign.lit .intro{transition-delay:.16s}
+#sign.lit .band{transition-delay:.22s}
 
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;
@@ -258,40 +273,47 @@ footer p{font-size:.8rem;color:var(--dim);margin:6px 0}
 <!-- ══ CURTAIN ══ -->
 <div id="curtain">
   <div>
-    <div class="dark-sign">CAPTAIN JOE'S<br>VEGAS WEEKEND</div>
+    <div class="dark-sign">Captain Joe's<span>Vegas Weekend</span></div>
     <button id="lightBtn">Light it up</button>
-    <small>SEPTEMBER 18–20 · 2026 · LAS VEGAS NV</small>
+    <small>September 18–20 · 2026 · Las Vegas NV</small>
   </div>
 </div>
 
 <main id="app">
 <div class="wrap">
 
-  <!-- ══ MARQUEE ══ -->
-  <div class="marquee" id="sign">
-    <div class="bulbs t"><i></i><i class="odd"></i></div>
-    <div class="bulbs b"><i></i><i class="odd"></i></div>
-    <div class="bulbs l"><i></i><i class="odd"></i></div>
-    <div class="bulbs r"><i></i><i class="odd"></i></div>
+  <!-- ══ POSTER HEADER — the flyer, made live ══ -->
+  <header class="poster" id="sign">
+    <div class="poster-rule eyebrow">
+      <span>Las Vegas · 2 nights only</span><span class="no">No. 001</span>
+    </div>
 
-    <div class="sign-top">Now appearing · 2 nights only</div>
-    <button class="neon" id="neonTitle" title="Go on, tap it">CAPTAIN JOE</button>
-    <div class="sign-sub" id="signSub">The Chakko Kid · Final Weekend Before The Final&nbsp;2</div>
+    <div class="kicker">two nights only</div>
+    <button class="headline" id="neonTitle" title="Go on, tap it">Captain Joe's</button>
+    <div class="headline accent">Vegas Weekend</div>
+    <div class="sign-sub" id="signSub">The Chakko Kid · Groom, temporarily unsupervised</div>
+    <p class="intro">Five men, one weekend, and the last unsupervised hours before the wedding. Two nights in Las Vegas — shows, cards, questionable decisions, and a running order nobody intends to follow.</p>
 
-    <div class="letterboard">
+    <div class="band">
+      <div>Sept 18 – 20 · 2026</div>
+      <div>Final weekend before the final 2</div>
+    </div>
+
+    <!-- now showing -->
+    <div class="board">
       <div class="lb-label"><span class="dot"></span><span id="lbLabel">Doors open in</span></div>
       <div class="lb-line" id="lbLine">The plizan is loading…</div>
       <div class="lb-meta" id="lbMeta"></div>
-    </div>
 
-    <div class="clock" id="clock">
-      <div class="cell"><b id="cD">--</b><span>Days</span></div>
-      <div class="cell"><b id="cH">--</b><span>Hrs</span></div>
-      <div class="cell"><b id="cM">--</b><span>Min</span></div>
-      <div class="cell"><b id="cS">--</b><span>Sec</span></div>
+      <div class="clock" id="clock">
+        <div class="cell"><b id="cD">--</b><span>Days</span></div>
+        <div class="cell"><b id="cH">--</b><span>Hrs</span></div>
+        <div class="cell"><b id="cM">--</b><span>Min</span></div>
+        <div class="cell"><b id="cS">--</b><span>Sec</span></div>
+      </div>
+      <div class="vegastime">Vegas time · <span class="tnum" id="vt">--:--</span></div>
     </div>
-    <div class="vegastime">Vegas time · <span class="tnum" id="vt">--:--</span></div>
-  </div>
+  </header>
 </div>
 
 <!-- ══ DAY RAIL ══ -->
@@ -302,6 +324,7 @@ footer p{font-size:.8rem;color:var(--dim);margin:6px 0}
   <a class="chip" href="#crew">The Crew</a>
   <a class="chip" href="#intel">Intel</a>
   <a class="chip" href="#dossier">Dossier</a>
+  <a class="chip" href="#flyer">Flyer</a>
 </div></nav>
 
 <div class="wrap">
@@ -367,7 +390,7 @@ footer p{font-size:.8rem;color:var(--dim);margin:6px 0}
 
     <div class="card" style="margin-top:12px">
       <h3>House rules</h3>
-      <ul class="rules" style="margin:8px 0 0;padding-left:18px">
+      <ul class="rules">
         <li>The groom does not open his wallet. Not once. Not even for water.</li>
         <li>Nobody says the phrase "one more hand" after 2 AM. Say it, buy the round.</li>
         <li>Saturday is an all-Caesars day. Buffet, dinner and show are in one building. Do not wander.</li>
@@ -429,12 +452,28 @@ footer p{font-size:.8rem;color:var(--dim);margin:6px 0}
     </div>
   </section>
 
+  <!-- ══ THE FLYER ══ -->
+  <section id="flyer">
+    <div class="sec-head"><h2>The Flyer</h2></div>
+    <p class="sec-note">The physical version. Same poster, 8.5 × 11, printed and handed over in person. This site is what its QR code points at.</p>
+    <div class="flyer-card">
+      <svg class="qr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" width="92" height="92" role="img" aria-label="QR code to the live itinerary"><path stroke="#0b0509" d="M0 0.5h7m1 0h1m1 0h2m1 0h2m7 0h7m-29 1h1m5 0h1m2 0h6m1 0h1m2 0h2m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m5 0h3m3 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m2 0h2m2 0h1m2 0h2m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h3m1 0h1m3 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h1m1 0h2m4 0h5m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h4m1 0h1m1 0h3m2 0h1m-21 1h1m3 0h1m1 0h4m3 0h1m3 0h3m1 0h5m2 0h1m-27 1h2m1 0h1m1 0h1m3 0h1m1 0h6m2 0h8m-29 1h1m1 0h6m1 0h1m1 0h2m2 0h1m2 0h1m1 0h3m5 0h1m-27 1h3m4 0h2m3 0h1m2 0h1m7 0h1m1 0h2m-29 1h1m1 0h1m2 0h3m1 0h3m1 0h2m2 0h1m2 0h2m5 0h1m-28 1h1m3 0h1m3 0h1m2 0h2m2 0h4m2 0h8m-29 1h1m1 0h2m1 0h2m2 0h1m2 0h4m1 0h1m2 0h7m1 0h1m-29 1h6m2 0h4m1 0h1m1 0h1m1 0h7m3 0h2m-28 1h1m1 0h1m1 0h4m1 0h1m2 0h1m3 0h1m1 0h3m1 0h1m3 0h1m-28 1h1m1 0h2m1 0h1m3 0h10m3 0h4m1 0h2m-27 1h1m1 0h1m1 0h1m2 0h1m5 0h2m1 0h1m2 0h1m4 0h1m1 0h1m-27 1h1m1 0h2m2 0h1m2 0h2m1 0h1m2 0h4m1 0h3m2 0h2m-29 1h2m4 0h4m3 0h2m1 0h3m1 0h6m2 0h1m-21 1h5m2 0h6m3 0h1m3 0h1m-29 1h7m1 0h2m1 0h5m2 0h3m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m2 0h2m1 0h2m1 0h1m1 0h2m1 0h1m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m1 0h3m1 0h2m3 0h1m1 0h7m1 0h1m-28 1h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h5m1 0h2m6 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m1 0h1m2 0h1m3 0h1m5 0h4m-29 1h1m5 0h1m6 0h1m3 0h1m2 0h6m1 0h2m-29 1h7m1 0h2m4 0h2m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1"/></svg>
+      <div class="txt">
+        <div class="label">Scan for the plizan</div>
+        <div class="sub">nirespire.github.io/joevegas · live countdown &amp; running order</div>
+      </div>
+      <a class="btn go" href="flyer/">Open the print flyer</a>
+    </div>
+  </section>
+
   <footer>
-    <p class="eyebrow">Las Vegas · September 18–20 · 2026</p>
-    <p>Built by the groomsmen. Debugged by nobody.</p>
-    <p>No cinnamon was forgotten in the making of this website.</p>
-    <p class="hidden-note" id="secretFooter">🃏 Royal flush. You found all four. Nothing happens now, but we're both impressed.</p>
-    <p style="opacity:.35;font-size:.7rem">There are six secrets on this page. You've found <span id="eggCount">0</span>.</p>
+    <div>
+      <p class="eyebrow">Las Vegas · September 18–20 · 2026</p>
+      <p>No cinnamon was forgotten in the making of this website.</p>
+      <p class="hidden-note" id="secretFooter">🃏 Royal flush. You found all four. Nothing happens now, but we're both impressed.</p>
+      <p style="opacity:.5;font-size:.74rem">There are six secrets on this page. You've found <span id="eggCount">0</span>.</p>
+    </div>
+    <div class="credit">Built by the groomsmen.<br>Debugged by nobody.</div>
   </footer>
 </div>
 </main>
@@ -577,8 +616,8 @@ function toast(m){tEl.textContent=m;tEl.classList.add("show");clearTimeout(tTime
   tTimer=setTimeout(function(){tEl.classList.remove("show");},3600);}
 
 /* 1. the sign itself */
-var names=["CAPTAIN JOE","VIVA LAS JOE","THE CHAKKO KID","THE PLIZAN","GROOM, LOOSE"],ni=0;
-var subs=["The Chakko Kid · Final Weekend Before The Final 2",
+var names=["Captain Joe's","VIVA LAS JOE","THE CHAKKO KID","THE PLIZAN","GROOM, LOOSE"],ni=0;
+var subs=["The Chakko Kid · Groom, temporarily unsupervised",
   "Est. back row, Theory of Knowledge, 2010",
   "Undefeated · Sweet Potato Casserole",
   "Two nights only · then he belongs to Catherine",
@@ -681,7 +720,7 @@ function confetti(chars){
 }
 
 /* rail highlight */
-var ids=["fri","sat","sun","crew","intel","dossier"],chips=[].slice.call(document.querySelectorAll(".chip"));
+var ids=["fri","sat","sun","crew","intel","dossier","flyer"],chips=[].slice.call(document.querySelectorAll(".chip"));
 addEventListener("scroll",function(){
   var best=0;ids.forEach(function(id,i){var el=document.getElementById(id);
     if(el&&el.getBoundingClientRect().top<160)best=i;});
