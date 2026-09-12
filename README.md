@@ -77,4 +77,4 @@ the QR codes (see Design, above), and the `joesbeforehoes.party` labels in `inde
 
 - All schedule times are pinned to Vegas time (PDT, UTC−7) so the page reads correctly from any device.
 - Preview any moment with `?now=2026-09-19T21:15`.
-- There are six secrets on the page. Start by tapping the headline.
+- There are seven secrets on the page. Start by tapping the headline.
