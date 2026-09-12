@@ -17,7 +17,7 @@ A single-sided 8.5 x 11 in print flyer announcing a Las Vegas bachelor weekend
 ("Captain Joe's Vegas Weekend", Sept 18-20 2026). It is a gag reveal handed to the
 groom and the four other attendees: headline, dates, the five-man company with roles,
 five house rules, and a QR code to the live companion site
-(https://nirespire.github.io/joevegas).
+(https://joesbeforehoes.party).
 
 Three era-themed variations were explored. **1c (1996 modern show poster) is the
 approved direction.** 1a and 1b are retained in the same file as historical context —
@@ -108,9 +108,9 @@ Bands, top to bottom:
 - `border-top: 1px solid rgba(244,233,216,.2)`, `padding: 26px 46px 34px`, flex row,
   `align-items:center`, `gap:20px`
 - QR code: 92 x 92 px, `background:#F4E9D8`, `padding:5px`, no radius. Encodes
-  `https://nirespire.github.io/joevegas`. Alt text: "QR code to the live itinerary".
+  `https://joesbeforehoes.party`. Alt text: "QR code to the live itinerary".
 - Label: "Scan for the plizan" — Anton 18px, uppercase, letter-spacing `.16em`, `#F4E9D8`
-- Sub-label: "nirespire.github.io/joevegas · live countdown & running order" —
+- Sub-label: "joesbeforehoes.party · live countdown & running order" —
   Space Grotesk 15px, `rgba(244,233,216,.6)`
 - Right, `margin-left:auto`, right-aligned, 14px, `rgba(244,233,216,.4)`, `line-height:1.4`:
   "Built by the groomsmen." / "Debugged by nobody." (two lines)
@@ -202,5 +202,5 @@ presentation chrome for the on-screen canvas only.
   `data-screen-label="1c"`.
 - `support.js` — prototype runtime only, not design. Required for the HTML to render.
 - Companion (not in this bundle): `Vegas Weekend Site.dc.html` — the live schedule site at
-  https://nirespire.github.io/joevegas that the flyer's QR code points to. Separate
+  https://joesbeforehoes.party that the flyer's QR code points to. Separate
   deliverable; ask if you need it documented too.
